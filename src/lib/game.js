@@ -1,5 +1,3 @@
-'use strict';
-
 class Game {
   constructor() {
     this.prefix = ['diamond', 'spade', 'heart', 'club'];
@@ -42,7 +40,7 @@ class Game {
     return newCards;
   }
 
-  sendoutCards(number) {
+  sendOutCards(number) {
     let outCards = [];
 
     for (let i = 0; i < number; i++) {
@@ -68,7 +66,7 @@ class Game {
         trueV = 10;
       }
 
-      if (trueV == 1) {
+      if (trueV === 1) {
         extra.push(9);
       }
 
@@ -85,7 +83,7 @@ class Game {
       /**
       * should check if it's ace with another ten points
       **/
-      if (totalSum == 20 && extra.length === 1 && cards.length == 2) {
+      if (totalSum === 20 && extra.length === 1 && cards.length === 2) {
         return 21;
       }
 
@@ -122,6 +120,47 @@ class Game {
     }
 
     return false;
+  }
+
+  getRestDealerCards(playerCards, dealerCards) {
+    let playerTotal = this.getCardsTotalValue(playerCards);
+    let dealerTotal = this.getCardsTotalValue(dealerCards);
+    let resetCards = [];
+    let bankerCardsCopy = [].concat(dealerCards);
+
+    while(this.dealerHitOrStick(playerTotal, dealerTotal)) {
+      let newCard = this.sendOutCards(1);
+      resetCards = resetCards.concat(newCard);
+      bankerCardsCopy = bankerCardsCopy.concat(newCard);
+      dealerTotal = this.getCardsTotalValue(bankerCardsCopy);
+    }
+
+    return resetCards;
+  }
+
+  getPlayerFinalState(playerCards, dealerCards) {
+    var playerTotal = this.getCardsTotalValue(playerCards),
+    dealerTotal = this.getCardsTotalValue(dealerCards);
+
+    if (playerTotal > 21) {
+      return 0;
+    }
+
+    if (dealerTotal > 21) {
+      return 2;
+    }
+
+    if (playerTotal > dealerTotal) {
+      return 2;
+    }
+
+    if (playerTotal === dealerTotal) {
+      return 1;
+    }
+
+    if (playerTotal < dealerTotal) {
+      return 0;
+    }
   }
 }
 

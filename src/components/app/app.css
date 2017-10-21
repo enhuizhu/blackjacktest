@@ -1,3 +1,20 @@
 .app {
   padding: 30px;
 }
+
+.clear {
+  clear: both;
+}
+
+.cards-container {
+  margin:20px 0;
+  min-height: 149px;
+}
+
+.cards-container .card {
+  float: left;
+}
+
+.buttons-container .button {
+  margin-right: 10px;
+}

@@ -4,6 +4,13 @@
   background-position: center;
   background-size: cover;
   transition: transform linear 0.05s;
+  margin-right: 10px;
+}
+
+.card.bg {
+  background-size: 50px 50px;
+  background-image: url('./assets/cardbg.jpg');
+  border-radius: 5px;
 }
 
 .card:hover {
