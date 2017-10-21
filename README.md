@@ -1,5 +1,8 @@
 # Lystable Blackjack
 
+![alt game](screenshort/game.png)
+
+
 The aim of this exercise is to create a simple React-powered game of [Blackjack](http://en.wikipedia.org/wiki/Blackjack). This should be a single-player game played against an AI dealer.
 
 > Your game must follow the following simple set of rules:

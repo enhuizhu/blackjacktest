@@ -30,8 +30,6 @@ class App extends Component {
   newGame() {
     this.initState();
     this.game = new Game();
-    // this.game.cards[49]= 'diamond_1';
-    // this.game.cards[48]= 'diamond_11';
     
     this.setState({
       playerCards: this.game.sendOutCards(2),
