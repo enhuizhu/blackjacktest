@@ -56,11 +56,7 @@ class Game {
     let extra = []; 
   
     cards.forEach((v) => {   
-      try{
-        var trueV = parseInt(v.split('_')[1]);
-      }catch(e){
-        console.info("value is",v);
-      }
+      let trueV = parseInt(v.split('_')[1]);
 
       if (trueV > 10) {
         trueV = 10;
@@ -139,8 +135,8 @@ class Game {
   }
 
   getPlayerFinalState(playerCards, dealerCards) {
-    var playerTotal = this.getCardsTotalValue(playerCards),
-    dealerTotal = this.getCardsTotalValue(dealerCards);
+    let playerTotal = this.getCardsTotalValue(playerCards);
+    let dealerTotal = this.getCardsTotalValue(dealerCards);
 
     if (playerTotal > 21) {
       return 0;
